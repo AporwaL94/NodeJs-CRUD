@@ -1,0 +1,80 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "API Documentation",
+    "version": "1.0.0"
+  },
+  "host": "localhost:4000",
+  "paths": {
+    "/api/blogs": {
+      "get": {
+        "summary": "Get all blogs",
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new blog",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "description": "The title of the blog"
+                },
+                "content": {
+                  "type": "string",
+                  "description": "The content of the blog"
+                }
+              },
+              "required": ["title", "content"]
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Blog created",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "description": "The ID of the blog"
+                },
+                "title": {
+                  "type": "string",
+                  "description": "The title of the blog"
+                },
+                "content": {
+                  "type": "string",
+                  "description": "The content of the blog"
+                },
+                "author": {
+                  "type": "string",
+                  "description": "The author of the blog"
+                },
+                "tags": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "description": "Tags associated with the blog"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
